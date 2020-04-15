@@ -12,11 +12,13 @@ namespace XEx04Quotation
         protected void Page_Load(object sender, EventArgs e)
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
-
+            /*
             if (PreviousPage != null)
             {
-
-                
+            */
+                lblSalesPrice.Text = Session["salesPrice"].ToString();
+                lblDiscountAmount.Text = Session["discountAmount"].ToString();
+                lblTotalPrice.Text = Session["salesPrice"].ToString();
 
 
 
@@ -33,8 +35,9 @@ namespace XEx04Quotation
                 lblTotalPrice.Text = totalPrice.ToString();
                 */
                 // HttpContext.Current.Session[salesPrice];
+            /*
             }
-
+            */
             /*
              if (PreviousPage != null)
             {
