@@ -28,6 +28,7 @@ namespace XEx04Quotation
                 lblTotalPrice.Text = totalPrice.ToString("c");
 
                 
+
                 Session.Add("salesPrice", salesPrice);
                 Session.Add("discountAmount", discountAmount);
                 Session.Add("totalPrice", totalPrice);
@@ -37,9 +38,6 @@ namespace XEx04Quotation
                 Session["salesPrice"] = salesPrice;
                 Session["discountAmount"] = discountAmount;
                 Session["totalPrice"] = totalPrice;
-                */
-                /*
-                Response.Redirect("Confirm.aspx");
                 */
                 /*
                 Session.Add("txtSalesPrice", txtSalesPrice);
