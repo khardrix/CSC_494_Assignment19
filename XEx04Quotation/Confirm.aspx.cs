@@ -14,54 +14,33 @@ namespace XEx04Quotation
         {
             UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
-
-            /*
-            if (PreviousPage != null)
+            if (Session["salesPrice"] == null || Session["discountAmount"] == null)
             {
-            */
-            /*
-            SortedList displaySalesPrice = (SortedList);
-            HttpContext.Current.Session["salesPrice"];
-            */
-            /*
-            SortedList salesPrice = (SortedList) Session["salesPrice"];
-            SortedList discountAmount = (SortedList) Session["discountAmount"];
-            SortedList totalPrice = (SortedList) Session["totalPrice"];
-            */
-            /* THESE WORK, BUT CANNOT FORMAT TO CURRENCY
-            lblSalesPrice.Text = Session["salesPrice"].ToString();
-            lblDiscountAmount.Text = Session["discountAmount"].ToString();
-            lblTotalPrice.Text = Session["totalPrice"].ToString();
-            */
-            /*
-            Response.Write(Session["salesPrice"].ToString());
-            */
-            /*
-            System.Collections.SortedList salesPrice = (System.Collections.SortedList)Session["salesPrice"];
-            System.Collections.SortedList discountAmount = (System.Collections.SortedList)Session["discountAmount"];
-            System.Collections.SortedList totalPrice = (System.Collections.SortedList)Session["totalPrice"];
-
-            lblSalesPrice.Text = salesPrice.ToString();
-            lblDiscountAmount.Text = discountAmount.ToString();
-            lblTotalPrice.Text = totalPrice.ToString();
-            */
-            // HttpContext.Current.Session[salesPrice];
-            /*
+                lblMessage.Text = "Click the Return button to go back to the previous page and " + 
+                    "click the Calculate button before you click the Confirm button.";
             }
-            */
-            /*
-             if (PreviousPage != null)
+            else
             {
-                TextBox txtSalesPrice = (TextBox)PreviousPage.FindControl("txtSalesPrice");
-                lblSalesPrice.Text = txtSalesPrice.Text;
+                decimal salesPriceNum = (decimal)Session["salesPrice"];
+                lblSalesPrice.Text = salesPriceNum.ToString("c");
 
-                TextBox txtDiscountAmount = (TextBox)PreviousPage.FindControl("txDiscountAmount");
-                lblDiscountAmount.Text = txtDiscountAmount.Text;
+                decimal discountAmountNum = (decimal)Session["discountAmount"];
+                lblDiscountAmount.Text = discountAmountNum.ToString("c");
 
-                TextBox txtTotalPrice = (TextBox)PreviousPage.FindControl("txtTotalPrice");
-                lblTotalPrice.Text = txtTotalPrice.Text;
+                decimal totalPriceNum = (decimal)Session["totalPrice"];
+                lblTotalPrice.Text = totalPriceNum.ToString("c");
             }
-            */
+        }
+
+        protected void btnSendQuotation_Click(object sender, EventArgs e)
+        {
+            if (IsValid)
+            {
+                string name = txtName.Text;
+                string email = txtEmail.Text;
+
+                lblMessage.Text = "Quotation sent to " + name + " at " + email + ".";
+            }
         }
     }
 }

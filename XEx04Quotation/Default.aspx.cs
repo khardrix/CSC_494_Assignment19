@@ -27,29 +27,22 @@ namespace XEx04Quotation
                 lblDiscountAmount.Text = discountAmount.ToString("c");
                 lblTotalPrice.Text = totalPrice.ToString("c");
 
-                
-
                 Session.Add("salesPrice", salesPrice);
                 Session.Add("discountAmount", discountAmount);
                 Session.Add("totalPrice", totalPrice);
-
-
-                /*
-                Session["salesPrice"] = salesPrice;
-                Session["discountAmount"] = discountAmount;
-                Session["totalPrice"] = totalPrice;
-                */
-                /*
-                Session.Add("txtSalesPrice", txtSalesPrice);
-                Session.Add("lblDiscountAmount", lblDiscountAmount);
-                Session.Add("lblTotalPrice", lblTotalPrice);
-                */
             }
         }
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Confirm.aspx");
+            if (Session["salesPrice"] == null || Session["discountAmount"] == null)
+            {
+                lblMessage.Text = "Click the Calculate button before you confirm.";
+            }
+            else
+            {
+                Response.Redirect("Confirm.aspx");
+            }
         }
     }
 }
